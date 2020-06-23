@@ -2,8 +2,8 @@ import sys
 from tkinter import PanedWindow, HORIZONTAL
 
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QMainWindow, QAction, qApp, QApplication, QPushButton, QWidget, QTabWidget, QVBoxLayout,QDialog, QDialogButtonBox, QTableWidget, QTableWidgetItem, QFileDialog
-from PyQt5 import QtGui, QtCore
+from PyQt5.QtWidgets import QMainWindow, QAction, QApp, QApplication, QPushButton, QWidget, QTabWidget, QVBoxLayout,QDialog, QDialogButtonBox, QTableWidget, QTableWidgetItem, QFileDialog
+from PyQt5 import QtGui, QtCore, QtWidgets
 
 
 class Gui(QMainWindow):
@@ -98,8 +98,6 @@ class Gui(QMainWindow):
             writer.writerows(data)
 
 
-
-
 class MyTableWidget(QWidget):
 
     def __init__(self, parent):
@@ -107,6 +105,7 @@ class MyTableWidget(QWidget):
         self.layout = QVBoxLayout(self)
 
         self.creatingTables()
+        self.appui_bouton()
 
         # Initialize tab screen
         self.tabs = QTabWidget()
@@ -120,9 +119,11 @@ class MyTableWidget(QWidget):
 
         # Create first tab
         self.tab1.layout = QVBoxLayout(self)
-        self.pushButton1 = QPushButton("Input File")
-        self.pushButton1.setMaximumSize(250, 150)
-        self.tab1.layout.addWidget(self.pushButton1)
+        self.Button1 = QPushButton("Input File")
+        self.Button1.resize(50, 50)
+        self.Button1.move(50, 50)
+        self.Button1.clicked.connect(self.appui_bouton)
+        self.tab1.layout.addWidget(self.Button1)
         self.tab1.layout.addWidget(self.tableWidget)
         self.tab1.setLayout(self.tab1.layout)
 
@@ -135,6 +136,11 @@ class MyTableWidget(QWidget):
         self.layout.addWidget(self.tabs)
         self.setLayout(self.layout)
 
+        #Create window 'Open File'
+
+    def appui_bouton(self):
+        self.secondWindow.layout = QVBoxLayout(self)
+        self
 
 
     def creatingTables(self):
@@ -161,10 +167,8 @@ class MyTableWidget(QWidget):
         self.setLayout(self.vBoxLayout)
 
 
-    def  Window1(self):
-        myLabel = QLabel("Second Window")
-        okButton = QPushButton("&OK")
-        cacelButton = QPushButton("Cancel")
-        buttonLayout = 
+
+
+
 
 
